@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 import sqlite3, bcrypt
 import os
 app = Flask(__name__)
-app.secret_key = "secret123"  # Required for session
+app.secret_key = "secret123" 
 DB_NAME = "users.db"
 def get_db():
     return sqlite3.connect(DB_NAME)
@@ -73,4 +73,5 @@ def logout():
 if __name__ == "__main__":
     create_table()
     app.run(debug=True)
+
 
