@@ -39,6 +39,7 @@ SECURITY FEATURES:
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 SCREENSHOTS:
+
 REGISTER PAGE:
 <img width="756" height="588" alt="image" src="https://github.com/user-attachments/assets/e864bdc7-a766-428d-8d37-0f1147ae8c84" />
 
