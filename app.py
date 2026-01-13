@@ -1,18 +1,12 @@
 from flask import Flask, render_template, request, redirect, session
 import sqlite3, bcrypt
 import os
-
 app = Flask(__name__)
 app.secret_key = "secret123"  # Required for session
-
 DB_NAME = "users.db"
-
-# ---------- Helper Functions ----------
 def get_db():
     return sqlite3.connect(DB_NAME)
-
 def create_table():
-    """Create users table if it does not exist"""
     db = get_db()
     cursor = db.cursor()
     cursor.execute("""
@@ -25,12 +19,11 @@ def create_table():
     db.commit()
     db.close()
     print("Database checked: 'users' table exists!")
-
-# ---------- Routes ----------
+    
 @app.route("/")
 def home():
     return redirect("/login")
-
+    
 @app.route("/register", methods=["GET", "POST"])
 def register():
     message = ""
@@ -63,7 +56,7 @@ def login():
             session["user"] = username
             return redirect("/dashboard")
         else:
-            message = "❌ Invalid username or password"
+            message = "Invalid username or password"
     return render_template("login.html", message=message)
 
 @app.route("/dashboard")
@@ -77,8 +70,7 @@ def logout():
     session.pop("user", None)
     return redirect("/login")
 
-# ---------- Run App ----------
 if __name__ == "__main__":
-    # ✅ Ensure DB and table exist before starting app
     create_table()
     app.run(debug=True)
+
